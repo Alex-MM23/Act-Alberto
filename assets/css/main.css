@@ -8,16 +8,21 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: 'Times New Roman', Times, serif;
+    
     text-align: center;
-    color: blueviolet;
     margin: 50px;
+}
+
+#titulo{
+    margin-top: -320px;
+    height: 400px;
 }
 
 .abuelo{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .filas{
@@ -30,11 +35,11 @@ body {
     width: 80px;
     height: 80px;
     border: none;
-    background-color: rgb(217, 140, 233);
+    background-color:#DEB887;
     outline: none;
     font-size: 50px;
     text-transform: uppercase;
-    color: aliceblue;
+    color: rgb(2, 2, 2);
     text-align: center;
     border-radius: 10%;
     border: solid black;
@@ -122,9 +127,6 @@ body {
     border: solid black;
 }
 
-#titulo{
-    font-size: 80px;
-}
 
 
 
