@@ -8,7 +8,8 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
-    
+    background-image: url(/assets/img/mapa_antiguo.jpg);
+    height: 800px;
     text-align: center;
     margin: 50px;
 }
