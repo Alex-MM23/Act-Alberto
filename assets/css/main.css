@@ -6,43 +6,48 @@
 }
 
 body {
-    height: 100vh;
-    grid-template-columns: 1fr;
-    grid-template-rows: 30% 1fr 30%;
-    grid-template-areas:
-        "zheader"
-        "zsection"
-        "zfooter";
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    color: blueviolet;
+    margin: 50px;
 }
 
 .abuelo{
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.row{
+.filas{
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
 }
 
-.square{
+#titulo{
+    font-size: 80px;
+}
+
+.cuadrados{
     width: 80px;
     height: 80px;
     border: none;
-    background-color: grey;
+    background-color: rgb(103, 196, 196);
     outline: none;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: aliceblue;
+    text-align: center;
+    border-radius: 10%;
+    border: solid black;
 }
 
-.result{
+.resultado{
     text-align: center;
     font-size: 36px;
+    font-weight: bold;
 }
 
 .button{
@@ -50,27 +55,15 @@ body {
     height: 60px;
     border-radius: 16px;
     border: none;
-    background-color: lightgreen;
+    background-color: rgb(0, 243, 0);
     font-size: 32px;
     color: aliceblue;
+    
 }
-
 
 button:hover{
-    border: 3px solid lightgreen;
+    border: 3px solid rgb(118, 241, 118);
     background-color: aliceblue;
-    color: lightgreen;
+    color: rgb(109, 248, 109);
     cursor: pointer;
-}
-header {
-    grid-area: zheader;  
-}
-
-section{
-    grid-area: zsection;
-}
-
-
-footer{
-    grid-area: zfooter;
 }
