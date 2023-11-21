@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORDLE</title>
 </head>
+<link rel="stylesheet" href="assets/css/main.css">
 <body>
-    hola
-    
+<h1 id="titulo"> Wordle </h1>
+
+<div class="abuelo">
+    <!-- <h2 class="cargando"> Cargando ... </h2> -->
+    <div class="filas">
+        <input type="text" maxlength="1" class="cuadrados" id="fila-1-1">
+        <input type="text" maxlength="1" class="cuadrados" id="fila-1-2">
+        <input type="text" maxlength="1" class="cuadrados" id="fila-1-3">
+        <input type="text" maxlength="1" class="cuadrados" id="fila-1-4">
+        <input type="text" maxlength="1" class="cuadrados" id="fila-1-5">
+    </div>
+</div> 
+<div class="resultado">
+    <!--<p>¡Ganaste!</p>-->
+    <button class="button" onclick="evaluarPalabra()">Comprobar</button>
+</div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

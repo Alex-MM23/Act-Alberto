@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Palabras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Juego de Palabras</h1>
+  <button onclick="verificarPalabra()">Verificar</button>
+  <div id="resultado"></div>
+
+  <script>
+    // Palabra objetivo
+    const palabraObjetivo = ['m', 'a', 'n', 'u', 'b', 'o', 'b', 'o'];
+
+    // Función para verificar la palabra ingresada
+    function verificarPalabra() {
+        // Cuadro de dialogo y letras en minuscula para no tener problemas
+      const palabraIngresada = prompt('Ingresa una palabra de 8 letras:').toLowerCase();
+
+      // Verificar la longitud de la palabra ingresada
+      if (palabraIngresada.length !== 8) {
+        alert('Ingresa una palabra de 8 letras.');
+        return;
+      }
+
+      // Evaluar la palabra y mostrar el resultado en el div 'resultado'
+      mostrarResultado(evaluarPalabra(palabraIngresada));
+    }
+
+    // Función para evaluar la palabra ingresada y devolver el resultado
+    function evaluarPalabra(palabraIngresada) {
+      const resultado = { rojo: 0, amarillo: 0, verde: 0 };
+
+      // Evaluar cada letra en la palabra ingresada
+      for (let i = 0; i < palabraIngresada.length; i++) {
+        const letra = palabraIngresada[i];
+
+        // Si la letra está en la posición correcta
+        if (letra === palabraObjetivo[i]) {
+          resultado.verde++;
+        } else if (palabraObjetivo.includes(letra)) {
+          // Si la letra está en la palabra objetivo, pero en la posición incorrecta
+          resultado.amarillo++;
+        } else {
+          // Si la letra no está en la palabra objetivo
+          resultado.rojo++;
+        }
+      }
+
+      return resultado;
+    }
+
+    // Función para mostrar el resultado en el div 'resultado'
+    function mostrarResultado(resultado) {
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = `Rojo: ${resultado.rojo}, Amarillo: ${resultado.amarillo}, Verde: ${resultado.verde}`;
+    }
+  </script>
+</body>
+</html>
