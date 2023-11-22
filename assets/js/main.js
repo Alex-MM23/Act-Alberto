@@ -5,9 +5,15 @@ const palabraDelDia = ["h","a","c","h","a"];
 //60 segundos que tiene un minuto * 5 minutos que queremos que sea el tiempo de duración del juego
 let segundos = 300;
 //funciones para definir el resultado de la letra al introducirlo en el juego
+let letraOk = 0;
 function verde(elemento) {
     //verde = lugar correcto de la letra 
     elemento.style.backgroundColor = "green";
+    letraOk = letraOk + 1;
+    if (letraOk === 5) {
+        // Si todas las letras están en la posición correcta, llamar modal ganador
+        mostrarModalGanador();
+    }
 }
 function rojo(elemento) {
     //rojo = incorrecto 
@@ -39,7 +45,6 @@ function obtenerPalabraFila(fila) {
 }
 //
 function evaluarPalabraFila(palabraFila, fila){
-    let letraOk = 0;
 //recorremos todas las letras de la fila
     for(let i = 0; i < palabraFila.length; i++){
         const letra = palabraFila[i];
@@ -48,27 +53,24 @@ function evaluarPalabraFila(palabraFila, fila){
         if(palabraFila != null){
             //sino esta vacio llama a evaluar palabra con la letra y columna (5 letras por columna )
             evaluarLetra(letra, fila, columna)
-            letraOk++;
         }else{
             //si esta vacio neutro y sino 
             neutro(document.getElementById(`fila-${fila}-${columna}`))
         }
-    }if(letraOk == 5){
-        mostrarModalGanador();
     }
 }
 
-function evaluarLetra(letra, fila, columna){
+function evaluarLetra(letra, fila, columna) {
     const elemento = document.getElementById(`fila-${fila}-${columna}`);
-    if(letra === palabraDelDia[columna -1]){
-        //si la letra es ta en la posicion correcta, se muestra verde
+
+    if (letra === palabraDelDia[columna - 1]) {
+        // Si la letra está en la posición correcta, se muestra verde
         verde(elemento);
-        //llamar modal ganador
-        //si la palabra incluye la letra, pero no en la posicion se pinta amarillo
-    }else if (palabraDelDia.includes(letra)){
-        amarillo(elemento);  
-    }else{
-        //si la letra no esta en la palabra rojo
+    } else if (palabraDelDia.includes(letra)) {
+        // Si la palabra incluye la letra, pero no en la posición correcta, se pinta amarillo
+        amarillo(elemento);
+    } else {
+        // Si la letra no está en la palabra, se pinta rojo
         rojo(elemento);
     }
 }
@@ -132,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('keyboard').appendChild(button);
     });
   
-// Función para manejar la pulsación de teclas
-function handleKeyPress(key) {
+    // Función para manejar la pulsación de teclas
+    function handleKeyPress(key) {
       keyboards.forEach((keyboard, index) => {
         if (!letterInArea.has(index)) {
           letterInArea.set(index, '');
@@ -151,8 +153,8 @@ function handleKeyPress(key) {
       });
     }
   
-// Función para actualizar el texto en el área
-function updateTextInArea(area, index) {
+    // Función para actualizar el texto en el área
+    function updateTextInArea(area, index) {
       // Limpia el contenido existente
       area.innerHTML = '';
   
@@ -163,44 +165,43 @@ function updateTextInArea(area, index) {
     }
   });
 
-function mostrarModalGanador() {
-  var modal = document.getElementById('modalGanador');
-  modal.style.display = 'flex';
+  function mostrarModalGanador() {
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'flex';
 }
 
 // Función para ocultar la modal
 function ocultarModalGanador() {
-  var modal = document.getElementById('modalGanador');
-  modal.style.display = 'none';
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'none';
 }
 
 // Cierra la modal si se hace clic fuera de ella
 window.onclick = function(event) {
-  var modal = document.getElementById('modalGanador');
-  if (event.target == modal) {
-      modal.style.display = 'none';
-  }
+    var modal = document.getElementById('modalGanador');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }
 
 function mostrarModalPerdedor() {
-  var modal = document.getElementById('modalPerdedor');
-  modal.style.display = 'flex';
+    var modal = document.getElementById('modal-perdedor');
+    modal.style.display = 'flex';
 }
-/*
+
 // Función para ocultar la modal
 function ocultarModalPerdedor() {
-  var modal = document.getElementById('modalPerdedor');
-  modal.style.display = 'flex';
+    var modal = document.getElementById('modal-perdedor');
+    modal.style.display = 'none';
 }
 
 // Cierra la modal si se hace clic fuera de ella
 window.onclick = function(event) {
-  var modal = document.getElementById('modalPerdedor');
-  if (event.target == modal) {
-      modal.style.display = 'none';
-  }
+    var modal = document.getElementById('modal-perdedor');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 }
-*/
 
 //function evaluarPalabra() {
     //     const fila_1_1 = document.getElementById("fila-1-1").value;
