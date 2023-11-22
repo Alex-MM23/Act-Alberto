@@ -43,11 +43,11 @@ function evaluarPalabra() {
     let palabraFila4 = fila_4_1 + fila_4_2 + fila_4_3 + fila_4_4 + fila_4_5;
     const palabras = palabraFila1 + palabraFila2 + palabraFila3 + palabraFila4;
 
-    for (let i = 0; i < palabras.length; i++) {
-        const letra = palabras[i];
-        if(palabras != null){
+    for (let i = 0; i < palabraFila1.length; i++) {
+        const letra = palabraFila1[i];
+        if(palabraFila1 != null){
             if (letra === palabraDelDia[i]) {
-                verde(document.getElementById("fila-1-" + (i + 1)));
+                verde(document.getElementById("fila-1-" + (i + 1))); 
             } else if (palabraDelDia.includes(letra)) {
                 amarillo(document.getElementById("fila-1-" + (i + 1)));
             } else {
@@ -57,4 +57,53 @@ function evaluarPalabra() {
             neutro(document.getElementById("fila-1-" + (i + 1)));
         }
     }
+
+    for (let i = 0; i < palabraFila2.length; i++) {
+        const letra = palabraFila2[i];
+        if(palabraFila2 != null){
+            if (letra === palabraDelDia[i]) {
+                verde(document.getElementById("fila-2-" + (i + 1))); 
+            } else if (palabraDelDia.includes(letra)) {
+                amarillo(document.getElementById("fila-2-" + (i + 1)));
+            } else {
+                rojo(document.getElementById("fila-2-" + (i + 1)));
+            }
+        }else {
+            neutro(document.getElementById("fila-2-" + (i + 1)));
+        }
+    }
+
+    for (let i = 0; i < palabraFila3.length; i++) {
+        const letra = palabraFila3[i];
+        if(palabraFila3 != null){
+            if (letra === palabraDelDia[i]) {
+                verde(document.getElementById("fila-3-" + (i + 1))); 
+            } else if (palabraDelDia.includes(letra)) {
+                amarillo(document.getElementById("fila-3-" + (i + 1)));
+            } else {
+                rojo(document.getElementById("fila-3-" + (i + 1)));
+            }
+        }else {
+            neutro(document.getElementById("fila-3-" + (i + 1)));
+        }
+    }
+
+    for (let i = 0; i < palabraFila4.length; i++) {
+        const letra = palabraFila4[i];
+        if(palabraFila4 != null){
+            if (letra === palabraDelDia[i]) {
+                verde(document.getElementById("fila-4-" + (i + 1))); 
+            } else if (palabraDelDia.includes(letra)) {
+                amarillo(document.getElementById("fila-4-" + (i + 1)));
+            } else {
+                rojo(document.getElementById("fila-4-" + (i + 1)));
+                // Se Acabo el juego
+            }
+        }else {
+            neutro(document.getElementById("fila-4-" + (i + 1)));
+        }
+    }
 }
+
+//"fila-" + (i + 1) + "-" + (i + 1)
+// div > input*4 query.SelectorAll="" - Array
