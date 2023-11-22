@@ -10,20 +10,20 @@
 
 <body>
     <div class="abuelo">
-    <div id="header">
-        <div id="cuenta__atras">
-            <p id="cuenta__atras"></p>
-        </div> 
-    </div>
-    <div id="modalGanador" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="ocultarModalGanador()">&times;</span>
-            <h2>Eres el vikingo supremo, ¡bravo campeón!</h2>
+        <div id="header">
+            <div id="cuenta__atras">
+                <p id="cuenta__atras"></p>
+            </div>
         </div>
-    </div>
-    <div id="titulo">
-        <img src="assets/img/titulo1.png" alt="">
-    </div>
+        <div id="modalGanador" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="ocultarModalGanador()">&times;</span>
+                <h2>Eres el vikingo supremo, ¡bravo campeón!</h2>
+            </div>
+        </div>
+        <div id="titulo">
+            <img src="assets/img/titulo1.png" alt="">
+        </div>
         <!-- <h2 class="cargando"> Cargando ... </h2> -->
         <div class="filas">
             <input type="text" maxlength="1" class="cuadrados" id="fila-1-1" contenteditable="true">
@@ -54,18 +54,45 @@
             <input type="text" maxlength="1" class="cuadrados" id="fila-4-5" contenteditable="true">
         </div>
         <br>
-        
-        <div id="keyboard">
-        <!-- Botones del teclado -->
+
+        <div id="keyboards">
+            <div class="tecla">Q</div>
+            <div class="tecla">W</div>
+            <div class="tecla">E</div>
+            <div class="tecla">R</div>
+            <div class="tecla">T</div>
+            <div class="tecla">Y</div>
+            <div class="tecla">U</div>
+            <div class="tecla">I</div>
+            <div class="tecla">O</div>
+            <div class="tecla">P</div>
+            <div class="tecla">A</div>
+            <div class="tecla">S</div>
+            <div class="tecla">D</div>
+            <div class="tecla">F</div>
+            <div class="tecla">G</div>
+            <div class="tecla">H</div>
+            <div class="tecla">J</div>
+            <div class="tecla">K</div>
+            <div class="tecla">L</div>
+            <div class="tecla">Ñ</div>
+            <div class=""></div>
+            <div class="tecla">Z</div>
+            <div class="tecla">X</div>
+            <div class="tecla">C</div>
+            <div class="tecla">V</div>
+            <div class="tecla">B</div>
+            <div class="tecla">N</div>
+            <div class="tecla">M</div>
+            <div class="tecla">x</div>
         </div>
         <br>
-    </div>
-    <div class="resultado">
-        <!--<p>¡Ganaste!</p>-->
-        <button class="button" onclick="evaluarPalabra()">Comprobar</button>
-        <button onclick="mostrarModalGanador()">Mostrar Ganador</button>
-    </div>
-    <script src="assets/js/main.js"></script>
+        <div class="resultado">
+            <!--<p>¡Ganaste!</p>-->
+            <button class="button" onclick="evaluarPalabra()">Comprobar</button>
+            <button onclick="mostrarModalGanador()">Mostrar Ganador</button>
+        </div>
+        <script src="assets/js/main.js"></script>
 </body>
 
 </html>
