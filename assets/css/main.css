@@ -32,37 +32,18 @@ body {
     margin-bottom: 10px;
 }
 
-#esp{
-    width: 70px;
-    height: 40px;
-    background-color: rgb(80, 18, 18);
-    background-image: url(/assets/img/esp.png);
-    font-size: 20px;
-    color: aliceblue;
+#cuenta__atras{
+    align-items: center;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    border-radius: 10%;  
-}
-
-#graficas{
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color:  rgb(80, 18, 18);
-    outline: none;
-    background-image: url(/assets/img/beneficios.png);
-    font-size: 20px;
-    border-radius: 10%;
-}
-
-#ajustes{
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color:  rgb(80, 18, 18);
-    outline: none;
-    background-image: url(/assets/img/configuraciones.png);
-    font-size: 20px;
-    border-radius: 10%;
+    width: 105px;
+    height: 30px;
+    background-color: rgb(163, 12, 12);
+    color: white;
+    margin-left: 1750px;
+    font-size: 17px;
+    border-radius: 13%;
 }
 
 .filas{
@@ -128,3 +109,5 @@ button {
     height: 40px;
     font-size: 16px;
 }
+
+
