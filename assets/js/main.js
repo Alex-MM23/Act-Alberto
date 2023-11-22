@@ -1,4 +1,5 @@
 const palabraDelDia = ["h","a","c","h","a"];
+let segundos = 300;
 
 function verde(elemento) {
     elemento.style.backgroundColor = "green";
@@ -54,6 +55,29 @@ function evaluarPalabra() {
         evaluarPalabraFila(palabraFila, i);
     }
 }
+
+function segundero() {
+    //Math siempre con mayuscula la primera. Cuidado
+    let minutos = Math.round((segundos - 30) / 60);
+    let segundosRestantes = segundos % 60;
+    if (segundosRestantes < 10) {
+      segundosRestantes = "0" + segundosRestantes;
+    }
+    //donde? en el label que he llamado cuenta_atras
+    document.getElementById("cuenta__atras").innerHTML =
+      minutos + ":" + segundosRestantes;
+    //para pararlo usare el clear interval
+    //si mi contador de segundos llega a llega cero le cambio de color a rojo por ejemplo
+    if (segundos == 0) {
+      clearInterval(cuentaAtras);
+      alert("SE ACABO");
+      document.getElementById("cuenta__atras").innerHTML = "FIN";
+    } else {
+      segundos--;
+    }
+  }
+
+let cuentaAtras = setInterval(segundero, 1000);
 
 //function evaluarPalabra() {
     //     const fila_1_1 = document.getElementById("fila-1-1").value;
