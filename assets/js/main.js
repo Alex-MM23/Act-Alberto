@@ -39,8 +39,8 @@ function obtenerPalabraFila(fila) {
 }
 //
 function evaluarPalabraFila(palabraFila, fila){
+    let letraOk = 0;
 //recorremos todas las letras de la fila
-
     for(let i = 0; i < palabraFila.length; i++){
         const letra = palabraFila[i];
         const columna = i + 1;
@@ -48,10 +48,13 @@ function evaluarPalabraFila(palabraFila, fila){
         if(palabraFila != null){
             //sino esta vacio llama a evaluar palabra con la letra y columna (5 letras por columna )
             evaluarLetra(letra, fila, columna)
+            letraOk++;
         }else{
             //si esta vacio neutro y sino 
             neutro(document.getElementById(`fila-${fila}-${columna}`))
         }
+    }if(letraOk == 5){
+        mostrarModalGanador();
     }
 }
 
@@ -159,3 +162,22 @@ document.addEventListener('DOMContentLoaded', function () {
       area.appendChild(span);
     }
   });
+
+  function mostrarModalGanador() {
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'flex';
+}
+
+// Función para ocultar la modal
+function ocultarModalGanador() {
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'none';
+}
+
+// Cierra la modal si se hace clic fuera de ella
+window.onclick = function(event) {
+    var modal = document.getElementById('modalGanador');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}

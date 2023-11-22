@@ -13,10 +13,14 @@
     <div id="header">
         <div id="cuenta__atras">
             <p id="cuenta__atras"></p>
-        </div>
-        
+        </div> 
     </div>
-    
+    <div id="modalGanador" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="ocultarModalGanador()">&times;</span>
+            <h2>Eres el vikingo supremo, ¡bravo campeón!</h2>
+        </div>
+    </div>
     <div id="titulo">
         <img src="assets/img/titulo1.png" alt="">
     </div>
@@ -59,6 +63,7 @@
     <div class="resultado">
         <!--<p>¡Ganaste!</p>-->
         <button class="button" onclick="evaluarPalabra()">Comprobar</button>
+        <button onclick="mostrarModalGanador()">Mostrar Ganador</button>
     </div>
     <script src="assets/js/main.js"></script>
 </body>
