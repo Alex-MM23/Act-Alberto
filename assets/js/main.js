@@ -27,9 +27,9 @@ function obtenerPalabraFila(fila) {
     let palabra = "";
     //extension de 5 letras
     for (let i = 1; i <= 5; i++) {
+        const inputElement = document.getElementById(`fila-${fila}-${i}`);
         //busca por fila - numero de fila y cada letra (5)
         //si la casilla esta ocupada, sacamos el, valor del id
-        const inputElement = document.getElementById(`fila-${fila}-${i}`);
         if (inputElement !== null) {
             palabra += inputElement.value;
         }
