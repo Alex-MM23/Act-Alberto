@@ -1,5 +1,6 @@
 const palabraDelDia = ["h","a","c","h","a"];
 let segundos = 300;
+let cuentaAtras = setInterval(segundero, 1000);
 
 function verde(elemento) {
     elemento.style.backgroundColor = "green";
@@ -26,14 +27,20 @@ function obtenerPalabraFila(fila) {
 }
 
 function evaluarPalabraFila(palabraFila, fila){
+    let letrasOK = 0;
     for(let i = 0; i < palabraFila.length; i++){
         const letra = palabraFila[i];
         const columna = i + 1;
         if(palabraFila != null){
-            evaluarLetra(letra, fila, columna)
+            if(evaluarLetra(letra, fila, columna)) {
+                letrasOK++;
+            }
         }else{
             neutro(document.getElementById(`fila-${fila}-${columna}`))
         }
+    }
+    if (letrasOK == 5){
+        mostrarModalGanador();
     }
 }
 
@@ -41,12 +48,13 @@ function evaluarLetra(letra, fila, columna){
     const elemento = document.getElementById(`fila-${fila}-${columna}`);
     if(letra === palabraDelDia[columna -1]){
         verde(elemento);
-        //llamar modal ganador
+        return true;
     }else if (palabraDelDia.includes(letra)){
         amarillo(elemento);
     }else{
         rojo(elemento);
     }
+    return false;
 }
 
 function evaluarPalabra() {
@@ -77,7 +85,24 @@ function segundero() {
     }
   }
 
-let cuentaAtras = setInterval(segundero, 1000);
+function mostrarModalGanador() {
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'flex';
+}
+
+// Función para ocultar la modal
+function ocultarModalGanador() {
+    var modal = document.getElementById('modalGanador');
+    modal.style.display = 'none';
+}
+
+// Cierra la modal si se hace clic fuera de ella
+window.onclick = function(event) {
+    var modal = document.getElementById('modalGanador');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
 
 //function evaluarPalabra() {
     //     const fila_1_1 = document.getElementById("fila-1-1").value;
