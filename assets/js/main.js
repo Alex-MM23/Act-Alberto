@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('keyboard').appendChild(button);
     });
   
-    // Función para manejar la pulsación de teclas
-    function handleKeyPress(key) {
+// Función para manejar la pulsación de teclas
+function handleKeyPress(key) {
       keyboards.forEach((keyboard, index) => {
         if (!letterInArea.has(index)) {
           letterInArea.set(index, '');
@@ -151,8 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   
-    // Función para actualizar el texto en el área
-    function updateTextInArea(area, index) {
+// Función para actualizar el texto en el área
+function updateTextInArea(area, index) {
       // Limpia el contenido existente
       area.innerHTML = '';
   
@@ -163,24 +163,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  function mostrarModalGanador() {
-    var modal = document.getElementById('modalGanador');
-    modal.style.display = 'flex';
+function mostrarModalGanador() {
+  var modal = document.getElementById('modalGanador');
+  modal.style.display = 'flex';
 }
 
 // Función para ocultar la modal
 function ocultarModalGanador() {
-    var modal = document.getElementById('modalGanador');
-    modal.style.display = 'none';
+  var modal = document.getElementById('modalGanador');
+  modal.style.display = 'none';
 }
 
 // Cierra la modal si se hace clic fuera de ella
 window.onclick = function(event) {
-    var modal = document.getElementById('modalGanador');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
+  var modal = document.getElementById('modalGanador');
+  if (event.target == modal) {
+      modal.style.display = 'none';
+  }
 }
+
+function mostrarModalPerdedor() {
+  var modal = document.getElementById('modalPerdedor');
+  modal.style.display = 'flex';
+}
+/*
+// Función para ocultar la modal
+function ocultarModalPerdedor() {
+  var modal = document.getElementById('modalPerdedor');
+  modal.style.display = 'flex';
+}
+
+// Cierra la modal si se hace clic fuera de ella
+window.onclick = function(event) {
+  var modal = document.getElementById('modalPerdedor');
+  if (event.target == modal) {
+      modal.style.display = 'none';
+  }
+}
+*/
 
 //function evaluarPalabra() {
     //     const fila_1_1 = document.getElementById("fila-1-1").value;

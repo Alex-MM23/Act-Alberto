@@ -1,70 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #1a1a1a;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    .teclado {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 5px;
-      max-width: 600px;
-    }
+        #wordle-container {
+            text-align: center;
+        }
 
-    .tecla {
-      width: 50px;
-      height: 50px;
-      background-color: #444;
-      border: 2px solid #777;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      color: #fff;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
+        #word-display {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-    .tecla:hover {
-      background-color: #666;
-    }
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
 
-    .tecla:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url(/assets/img/teclas.png); /* Añade la imagen vikinga */
-      background-size: cover;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .tecla:hover:before {
-      opacity: 0.5;
-    }
-  </style>
+        .key {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-  <div class="teclado">
-    <div class="tecla">Q</div>
-    <div class="tecla">W</div>
-    <div class="tecla">E</div>
-    <!-- Agrega más teclas según sea necesario -->
-  </div>
+    <div id="wordle-container">
+        <div id="word-display"></div>
+        <div id="keyboard-container" class="keyboard"></div>
+    </div>
+    <script>
+        const words = ["apple", "banana", "orange", "grape", "kiwi"];
+        let chosenWord = words[Math.floor(Math.random() * words.length)];
+        let guessedWord = Array(chosenWord.length).fill("_");
+        const maxAttempts = 6;
+
+        function displayWord() {
+            document.getElementById("word-display").textContent = guessedWord.join(" ");
+        }
+
+        function displayKeyboard() {
+            const keyboardContainer = document.getElementById("keyboard-container");
+
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const key = document.createElement("div");
+                key.className = "key";
+                key.textContent = letter;
+                key.addEventListener("click", function () {
+                    checkGuess(letter);
+                });
+                keyboardContainer.appendChild(key);
+            }
+        }
+
+        function checkGuess(letter) {
+            if (guessedWord.includes(letter)) {
+                // Letter already guessed
+                return;
+            }
+
+            const indices = [];
+
+            for (let i = 0; i < chosenWord.length; i++) {
+                if (chosenWord[i] === letter) {
+                    guessedWord[i] = letter;
+                    indices.push(i);
+                }
+            }
+
+            if (indices.length === 0) {
+                // Incorrect guess
+                displayWord();
+            } else {
+                // Correct guess
+                displayWord();
+
+                if (guessedWord.join("") === chosenWord) {
+                    alert("¡Ganaste!");
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            displayWord();
+            displayKeyboard();
+        });
+    </script>
 </body>
 </html>
-
-
