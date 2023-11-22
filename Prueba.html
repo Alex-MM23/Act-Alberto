@@ -1,73 +1,114 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juego de Palabras</title>
+  <link rel="stylesheet" href="styles.css">
+  <title>Teclado Interactivo</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    #resultado {
-      margin-top: 20px;
-      font-weight: bold;
+    
+    .cuadrados {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 5px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 20px;
     }
-  </style>
+    
+    #keyboard {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 5px;
+    }
+    
+    button {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+    </style>
 </head>
 <body>
-  <h1>Juego de Palabras</h1>
-  <button onclick="verificarPalabra()">Verificar</button>
-  <div id="resultado"></div>
+  <div class="cuadrados" contenteditable="true"></div>
+  <div class="cuadrados" contenteditable="true"></div>
+  <div class="cuadrados" contenteditable="true"></div>
+  <div class="cuadrados" contenteditable="true"></div>
+  <div class="cuadrados" contenteditable="true"></div>
+  <div id="keyboard">
+    <!-- Botones del teclado -->
+  </div>
 
-  <script>
-    // Palabra objetivo
-    const palabraObjetivo = ['m', 'a', 'n', 'u', 'b', 'o', 'b', 'o'];
-
-    // Función para verificar la palabra ingresada
-    function verificarPalabra() {
-        // Cuadro de dialogo y letras en minuscula para no tener problemas
-      const palabraIngresada = prompt('Ingresa una palabra de 8 letras:').toLowerCase();
-
-      // Verificar la longitud de la palabra ingresada
-      if (palabraIngresada.length !== 8) {
-        alert('Ingresa una palabra de 8 letras.');
-        return;
-      }
-
-      // Evaluar la palabra y mostrar el resultado en el div 'resultado'
-      mostrarResultado(evaluarPalabra(palabraIngresada));
-    }
-
-    // Función para evaluar la palabra ingresada y devolver el resultado
-    function evaluarPalabra(palabraIngresada) {
-      const resultado = { rojo: 0, amarillo: 0, verde: 0 };
-
-      // Evaluar cada letra en la palabra ingresada
-      for (let i = 0; i < palabraIngresada.length; i++) {
-        const letra = palabraIngresada[i];
-
-        // Si la letra está en la posición correcta
-        if (letra === palabraObjetivo[i]) {
-          resultado.verde++;
-        } else if (palabraObjetivo.includes(letra)) {
-          // Si la letra está en la palabra objetivo, pero en la posición incorrecta
-          resultado.amarillo++;
-        } else {
-          // Si la letra no está en la palabra objetivo
-          resultado.rojo++;
-        }
-      }
-
-      return resultado;
-    }
-
-    // Función para mostrar el resultado en el div 'resultado'
-    function mostrarResultado(resultado) {
-      const resultadoDiv = document.getElementById('resultado');
-      resultadoDiv.innerHTML = `Rojo: ${resultado.rojo}, Amarillo: ${resultado.amarillo}, Verde: ${resultado.verde}`;
-    }
-  </script>
+  <script src="script.js"></script>
+  
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const keyboards = document.querySelectorAll('.cuadrados');
+    const keyboardButtons = document.getElementById('keyboard').children;
+    const letterInArea = new Map();
+  
+    // Definir las teclas del teclado
+    const keys = [
+      
+      'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+      'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+      'Z', 'X', 'C', 'V', 'B', 'N', 'M',
+      
+    ];
+  
+    // Crear botones para cada tecla
+    keys.forEach(key => {
+      const button = document.createElement('button');
+      button.textContent = key;
+  
+      // Manejar eventos de clic para las teclas
+      button.addEventListener('click', function () {
+        handleKeyPress(key);
+      });
+  
+      document.getElementById('keyboard').appendChild(button);
+    });
+  
+    // Función para manejar la pulsación de teclas
+    function handleKeyPress(key) {
+      keyboards.forEach((keyboard, index) => {
+        if (!letterInArea.has(index)) {
+          letterInArea.set(index, '');
+        }
+  
+        const span = document.createElement('span');
+        span.textContent = key;
+  
+        if (key === 'Space') {
+          span.style.width = '40px'; // Ajusta el ancho del espacio
+        }
+  
+        letterInArea.set(index, key);
+        updateTextInArea(keyboard, index);
+      });
+    }
+  
+    // Función para actualizar el texto en el área
+    function updateTextInArea(area, index) {
+      // Limpia el contenido existente
+      area.innerHTML = '';
+  
+      const span = document.createElement('span');
+      span.textContent = letterInArea.get(index);
+  
+      area.appendChild(span);
+    }
+  });
+</script>
 </html>
+
+

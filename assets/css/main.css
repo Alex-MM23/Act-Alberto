@@ -84,49 +84,6 @@ body {
     border-radius: 10%;
     border: solid black;
 }
-
-.teclado{
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.tecla{
-    width: 80px;
-    height: 80px;
-    border: none;
-    background-color: rgb(91, 102, 102);
-    font-size: 50px;
-    color: aliceblue;
-    text-align: center;
-    border-radius: 10%;
-    border: solid black;
-}
-
-.x{
-    width: 100px;
-    height: 80px;
-    border: none;
-    background-color: rgb(255, 0, 0);
-    font-size: 50px;
-    color: aliceblue;
-    text-align: center;
-    border-radius: 10%;
-    border: solid black;
-}
-
-.enter{
-    width: 100px;
-    height: 80px;
-    border: none;
-    background-color: rgb(28, 131, 28);
-    font-size: 25px;
-    color: aliceblue;
-    text-align: center;
-    border-radius: 10%;
-    border: solid black;
-}
-
 .resultado{
     text-align: center;
     font-size: 36px;
@@ -151,3 +108,23 @@ button:hover{
     cursor: pointer;
 }
 
+.cuadrados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 20px;
+}
+  
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+}
