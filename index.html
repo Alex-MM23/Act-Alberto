@@ -11,9 +11,8 @@
 <body>
     <div class="abuelo">
         <div id="header">
-            <div id="cuenta__atras">
-                <p id="cuenta__atras"></p>
-            </div>
+                <div id="pausaBtn" onclick="pausarReanudar()">Pausa</div>
+                <div id="cuenta__atras">Tiempo: <span id="tiempoRestante">00:00</span></div>
         </div>
         <div id="modalGanador" class="modal">
             <div class="modal-content">
@@ -26,7 +25,7 @@
         </div>
         <div id="modal-perdedor" class="modal-perdedor">
             <div class="modal-perdedor-content">
-                <span class="close-perdedor" onclick="ocultarModalGanador()">&times;</span>
+                <span class="close-perdedor" onclick="ocultarModalPerdedor()">&times;</span>
                 <h2>¡Perdedor!</h2>
                 
             </div>
@@ -102,8 +101,6 @@
         <div class="resultado">
             <!--<p>¡Ganaste!</p>-->
             <button class="button" onclick="evaluarPalabra()">Comprobar</button>
-            <button class="button2" onclick="mostrarModalGanador()">Mostrar Ganador</button>
-            <button class="button2" onclick="mostrarModalPerdedor()">Mostrar Perdedor</button>
         </div>
         </div>
         <script src="assets/js/main.js"></script>

@@ -1,6 +1,6 @@
 * {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -14,64 +14,80 @@ body {
     margin: 50px;
 }
 
-#titulo{
+#titulo {
     margin-top: -290px;
     height: 430px;
 }
 
-.abuelo{
+.abuelo {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
-#header{
+#header {
     display: flex;
     gap: 50px;
     margin-top: -40px;
     margin-bottom: 10px;
+    justify-content: space-around;
 }
 
-#cuenta__atras{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    width: 110px;
-    height: 30px;
-    background-color: rgb(163, 12, 12);
-    color: white;
-    margin-left: 880%;
-    font-size: 20px;
-    border-radius: 13%;
+#pausaBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.filas{
+#cuenta__atras {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: 1px solid #c0392b;
+    border-radius: 5px;
+}
+
+.filas {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
 }
 
-.cuadrados{
+.cuadrados {
     width: 80px;
     height: 80px;
     border: none;
-    background-color:#868685;
-    outline: none;
+    background-color: #868685;
     font-size: 50px;
     text-transform: uppercase;
     color: rgb(2, 2, 2);
     text-align: center;
     border-radius: 10%;
     border: 1px solid #864444;
+    outline: none; /* Eliminar el contorno de enfoque */
 }
-.resultado{
+
+.cuadrados:focus {
+    outline: none; /* Asegurar que el contorno de enfoque se elimine cuando se hace clic */
+}
+
+
+.resultado {
     text-align: center;
     font-size: 36px;
     font-weight: bold;
 }
 
-.button{
+.button2 {
     width: 180px;
     height: 60px;
     border-radius: 16px;
@@ -79,31 +95,25 @@ body {
     background-color: rgb(28, 131, 28);
     font-size: 32px;
     color: rgb(255, 255, 255);
-    
 }
 
-button:hover{
-    border: 3px solid rgb(12, 12, 12);
-    background-color: rgb(91, 133, 43);
-    color: rgb(250, 250, 250);
-    cursor: pointer;
+.button2 {
+    font-size: 22px;
 }
 
-.button2{
+.button {
     width: 180px;
     height: 60px;
     border-radius: 16px;
-    border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(28, 131, 28);
-    font-size: 22px;
-    color: rgb(255, 255, 255);
-    
+    border: 3px solid #555; /* Un color más oscuro para el borde */
+    background-color: #4CAF50; /* Verde similar al usado en el pausar */
+    font-size: 32px;
+    color: #fff; /* Texto en color blanco para mayor contraste */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover{
-    border: 3px solid rgb(12, 12, 12);
-    background-color: rgb(91, 133, 43);
-    color: rgb(250, 250, 250);
+.button:hover {
+    background-color: #45a049; /* Un tono más oscuro al pasar el ratón */
     cursor: pointer;
 }
 
@@ -126,8 +136,8 @@ button:hover{
     cursor: pointer;
     position: relative;
     overflow: hidden;
-  }
-  
+}
+
 .tecla:hover {
     background-color: #666;
 }
@@ -155,27 +165,37 @@ button {
     font-size: 16px;
 }
 
-.modal {
+.modal,
+.modal-perdedor {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
     z-index: 1;
 }
-.modal-content {
+
+.modal-content,
+.modal-perdedor-content {
     background-color: burlywood;
     padding: 70px;
     border-radius: 5px;
     text-align: center;
     position: relative;
-    left: 310px;
+    left: 25%;
 }
-.close {
+
+.modal-perdedor-content>h2{
+    position: relative;
+    bottom: 10px;
+}
+
+.close,
+.close-perdedor {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -184,64 +204,34 @@ button {
     position: relative;
     bottom: 60px;
     left: 49px;
-    z-index: 1;
+    z-index: 99;
 }
 
-.modal-perdedor {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-.modal-perdedor-content {
-    background-color: burlywood;
-    padding: 120px;
-    border-radius: 5px;
-    text-align: center;
+.hacha1 {
+    height: 280px;
+    right: 460px;
+    bottom: 115px;
     position: relative;
-    left: 310px;
-}
-.close-perdedor {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    bottom: 110px;
-    left: 100px;
-    z-index: 1;
 }
 
-.hacha1{
-    height: 220px;
+.hacha2 {
+    height: 280px;
+    right: 160px;
+    bottom: 115px;
+    position: relative;
+}
+
+.hacha3 {
+    height: 280px;
+    right: 100px;
     bottom: 101px;
-    right: 550px;
-    position: relative;
-}
-.hacha2{
-    height: 220px;
-    bottom: 101px;
-    left: -70px;
     position: relative;
 }
 
-.hacha3{
-    height: 220px;
-    bottom: 151px;
-    right: 290px;
-    position: relative;
-}
-.hacha4{
-    height: 220px;
-    bottom: 151px;
-    left: -70px;
+.hacha4 {
+    height: 280px;
+    right: 160px;
+    bottom: 101px;
     position: relative;
 }
 

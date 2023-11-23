@@ -9,11 +9,6 @@ let letraOk = 0;
 function verde(elemento) {
     //verde = lugar correcto de la letra 
     elemento.style.backgroundColor = "green";
-    letraOk = letraOk + 1;
-    if (letraOk === 5) {
-        // Si todas las letras están en la posición correcta, llamar modal ganador
-        mostrarModalGanador();
-    }
 }
 function rojo(elemento) {
     //rojo = incorrecto 
@@ -44,20 +39,29 @@ function obtenerPalabraFila(fila) {
     return palabra;
 }
 //
-function evaluarPalabraFila(palabraFila, fila){
-//recorremos todas las letras de la fila
-    for(let i = 0; i < palabraFila.length; i++){
-        const letra = palabraFila[i];
-        const columna = i + 1;
-        //esto es la concatenacion de las letras hasta llegar al maximo que es cinco
-        if(palabraFila != null){
-            //sino esta vacio llama a evaluar palabra con la letra y columna (5 letras por columna )
-            evaluarLetra(letra, fila, columna)
-        }else{
-            //si esta vacio neutro y sino 
-            neutro(document.getElementById(`fila-${fila}-${columna}`))
-        }
-    }
+function evaluarPalabraFila(palabraFila, fila) {
+  let verdesEnFila = 0;
+
+  for (let i = 0; i < palabraFila.length; i++) {
+      const letra = palabraFila[i];
+      const columna = i + 1;
+
+      if (letra != "") {
+          evaluarLetra(letra, fila, columna);
+
+          // Contar las celdas verdes en la misma fila
+          if (document.getElementById(`fila-${fila}-${columna}`).style.backgroundColor === "green") {
+              verdesEnFila++;
+          }
+      } else {
+          neutro(document.getElementById(`fila-${fila}-${columna}`));
+      }
+  }
+
+  // Si hay 5 celdas verdes en la misma fila, mostrar la modal del ganador
+  if (verdesEnFila === 5) {
+      mostrarModalGanador();
+  }
 }
 
 function evaluarLetra(letra, fila, columna) {
@@ -76,33 +80,57 @@ function evaluarLetra(letra, fila, columna) {
 }
 
 function evaluarPalabra() {
-    for (let i = 1; i <= 4; i++) {
-        //me llevara a la funcion de obtenerpalabrafila con la palabra
-        const palabraFila = obtenerPalabraFila(i);
-        evaluarPalabraFila(palabraFila, i);
-    }
+  let todasVerdes = true; // Variable para verificar si todas las celdas son verdes en la última fila
+
+  for (let i = 1; i <= 4; i++) {
+      const palabraFila = obtenerPalabraFila(i);
+      evaluarPalabraFila(palabraFila, i);
+
+      // Verificar si todas las celdas son verdes en la última fila
+      if (i === 4) {
+          todasVerdes = palabraFila.split("").every(letra => letra === "h"); // Cambia "h" por la letra correcta
+      }
+  }
+
+  // Si no todas las celdas son verdes en la última fila, mostrar la modal del perdedor
+  if (!todasVerdes) {
+      mostrarModalPerdedor();
+  }
+}
+
+let pausado = false; // Variable para rastrear el estado de pausa
+
+function pausarReanudar() {
+    // Cambiar el estado de pausa
+    pausado = !pausado;
+
+    // Cambiar el texto del botón según el estado de pausa
+    const botonPausar = document.getElementById("pausaBtn");
+    botonPausar.textContent = pausado ? "Reanudar" : "Pausar";
 }
 
 function segundero() {
-    //Math siempre con mayuscula la primera. Cuidado
-    let minutos = Math.round((segundos - 30) / 60);
-    let segundosRestantes = segundos % 60;
-    if (segundosRestantes < 10) {
-      segundosRestantes = "0" + segundosRestantes;
+    if (!pausado) {
+        // Math siempre con mayúscula la primera. Cuidado
+        let minutos = Math.round((segundos - 30) / 60);
+        let segundosRestantes = segundos % 60;
+        if (segundosRestantes < 10) {
+            segundosRestantes = "0" + segundosRestantes;
+        }
+        // donde? en el label que he llamado cuenta_atras
+        document.getElementById("cuenta__atras").innerHTML =
+            "Tiempo:" + " " + minutos + ":" + segundosRestantes;
+        // para pararlo usaré el clearInterval
+        // si mi contador de segundos llega a cero, le cambio de color a rojo, por ejemplo
+        if (segundos == 0) {
+            clearInterval(cuentaAtras);
+            document.getElementById("cuenta__atras").innerHTML = "FIN";
+            mostrarModalPerdedor();
+        } else {
+            segundos--;
+        }
     }
-    //donde? en el label que he llamado cuenta_atras
-    document.getElementById("cuenta__atras").innerHTML =
-      minutos + ":" + segundosRestantes;
-    //para pararlo usare el clear interval
-    //si mi contador de segundos llega a llega cero le cambio de color a rojo por ejemplo
-    if (segundos == 0) {
-      clearInterval(cuentaAtras);
-      alert("SE ACABO");
-      document.getElementById("cuenta__atras").innerHTML = "FIN";
-    } else {
-      segundos--;
-    }
-  }
+}
 
 let cuentaAtras = setInterval(segundero, 1000);
 
