@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/fondo2.jpg);
+    text-align: center;
+    height: 800px;
+    margin: 50px;
+}
+
+#titulo {
+    margin-top: -290px;
+    height: 430px;
+}
+
+.abuelo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    display: flex;
+    gap: 50px;
+    margin-top: -40px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+}
+
+#pausaBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cuenta__atras {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: 1px solid #c0392b;
+    border-radius: 5px;
+}
+
+.filas {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cuadrados {
+    width: 80px;
+    height: 80px;
+    border: none;
+    background-color: #868685;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(2, 2, 2);
+    text-align: center;
+    border-radius: 10%;
+    border: 1px solid #864444;
+    outline: none; /* Eliminar el contorno de enfoque */
+}
+
+.cuadrados:focus {
+    outline: none; /* Asegurar que el contorno de enfoque se elimine cuando se hace clic */
+}
+
+
+.resultado {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.button2 {
+    width: 180px;
+    height: 60px;
+    border-radius: 16px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgb(28, 131, 28);
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+}
+
+.button2 {
+    font-size: 22px;
+}
+
+.button {
+    width: 180px;
+    height: 60px;
+    border-radius: 16px;
+    border: 3px solid #555; /* Un color más oscuro para el borde */
+    background-color: #4CAF50; /* Verde similar al usado en el pausar */
+    font-size: 32px;
+    color: #fff; /* Texto en color blanco para mayor contraste */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+    background-color: #45a049; /* Un tono más oscuro al pasar el ratón */
+    cursor: pointer;
+}
+
+#keyboards {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+.tecla {
+    width: 50px;
+    height: 50px;
+    background-color: #444;
+    border: 2px solid #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tecla:hover {
+    background-color: #666;
+}
+
+.tecla:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/img/teclas.png); /* Añade la imagen vikinga */
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tecla:hover:before {
+    opacity: 0.5;
+}
+
+button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.modal-perdedor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: burlywood;
+    padding: 70px;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    left: calc(35% - 65px);
+}
+
+.modal-perdedor-content {
+    background-color: burlywood;
+    padding: 70px;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    left: calc(48.2% - 100px);
+}
+
+.modal-perdedor-content>h2{
+    position: relative;
+    bottom: 10px;
+}
+
+.close,
+.close-perdedor {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    bottom: 60px;
+    left: 49px;
+    z-index: 99;
+}
+
+.hacha1 {
+    height: 280px;
+    right: 8.5%;
+    bottom: 115px;
+    position: relative;
+}
+
+.hacha2 {
+    height: 280px;
+    left: 8.5%;
+    bottom: 115px;
+    position: relative;
+}
+
+.hacha3 {
+    height: 280px;
+    left: 2%;
+    bottom: 101px;
+    position: relative;
+}
+
+.hacha4 {
+    height: 280px;
+    right: 2%;
+    bottom: 101px;
+    position: relative;
+}
+
