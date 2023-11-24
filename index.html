@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORDLE</title>
+</head>
+<link rel="stylesheet" href="assets/css/main.css">
+
+<body>
+    <div class="abuelo">
+        <div id="header">
+                <div id="pausaBtn" onclick="pausarReanudar()">Pausa</div>
+                <div id="cuenta__atras">Tiempo: <span id="tiempoRestante">00:00</span></div>
+        </div>
+        <div id="modalGanador" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="ocultarModalGanador()">&times;</span>
+                <h2>Eres el vikingo supremo, ¡bravo campeón!</h2>
+                
+            </div>
+            <img class="hacha1" src="assets/img/hacha_derecha.png" alt="">
+            <img class="hacha2" src="assets/img/hacha_izquierda.png" alt="">
+        </div>
+        <div id="modal-perdedor" class="modal-perdedor">
+            <div class="modal-perdedor-content">
+                <span class="close-perdedor" onclick="ocultarModalPerdedor()">&times;</span>
+                <h2>¡Perdedor!</h2>
+                
+            </div>
+            <img class="hacha3" src="assets/img/hacha_derecha.png" alt="">
+            <img class="hacha4" src="assets/img/hacha_izquierda.png" alt="">
+        </div>
+        <div id="titulo">
+            <img src="assets/img/titulo1.png" alt="">
+        </div>
+        <!-- <h2 class="cargando"> Cargando ... </h2> -->
+        <div class="filas">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-1-1" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-1-2" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-1-3" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-1-4" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-1-5" contenteditable="true">
+        </div>
+        <div class="filas">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-2-1" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-2-2" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-2-3" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-2-4" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-2-5" contenteditable="true">
+        </div>
+        <div class="filas">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-3-1" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-3-2" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-3-3" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-3-4" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-3-5" contenteditable="true">
+        </div>
+        <div class="filas">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-4-1" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-4-2" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-4-3" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-4-4" contenteditable="true">
+            <input type="text" maxlength="1" class="cuadrados" id="fila-4-5" contenteditable="true">
+        </div>
+        <br>
+
+        <div id="keyboards">
+            <div class="tecla">Q</div>
+            <div class="tecla">W</div>
+            <div class="tecla">E</div>
+            <div class="tecla">R</div>
+            <div class="tecla">T</div>
+            <div class="tecla">Y</div>
+            <div class="tecla">U</div>
+            <div class="tecla">I</div>
+            <div class="tecla">O</div>
+            <div class="tecla">P</div>
+            <div class="tecla">A</div>
+            <div class="tecla">S</div>
+            <div class="tecla">D</div>
+            <div class="tecla">F</div>
+            <div class="tecla">G</div>
+            <div class="tecla">H</div>
+            <div class="tecla">J</div>
+            <div class="tecla">K</div>
+            <div class="tecla">L</div>
+            <div class="tecla">Ñ</div>
+            <div class=""></div>
+            <div class="tecla">Z</div>
+            <div class="tecla">X</div>
+            <div class="tecla">C</div>
+            <div class="tecla">V</div>
+            <div class="tecla">B</div>
+            <div class="tecla">N</div>
+            <div class="tecla">M</div>
+            <div class="tecla">x</div>
+        </div>
+        <br>
+        <div class="resultado">
+            <!--<p>¡Ganaste!</p>-->
+            <button class="button" onclick="evaluarPalabra()">Comprobar</button>
+        </div>
+        </div>
+        <script src="assets/js/main.js"></script>
+</body>
+
+</html>
