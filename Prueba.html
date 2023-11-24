@@ -1,73 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juego de Palabras</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 50px;
-    }
-    #resultado {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .input-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .key {
+            padding: 10px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputElements = document.querySelectorAll(".input-container input");
+            const keyboardElement = document.getElementById("keyboard");
+
+            keyboardElement.addEventListener("click", function (event) {
+                if (event.target.classList.contains("key")) {
+                    const key = event.target.dataset.value; // Obtener el valor asociado a la tecla
+                    const activeInput = document.querySelector(".input-container input:focus");
+                    
+                    if (activeInput) {
+                        activeInput.value += key;
+                    }
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-  <h1>Juego de Palabras</h1>
-  <button onclick="verificarPalabra()">Verificar</button>
-  <div id="resultado"></div>
+    <div class="input-container">
+        <input type="text" placeholder="Row 1, Col 1">
+        <input type="text" placeholder="Row 1, Col 2">
+        <input type="text" placeholder="Row 1, Col 3">
+        <input type="text" placeholder="Row 1, Col 4">
 
-  <script>
-    // Palabra objetivo
-    const palabraObjetivo = ['m', 'a', 'n', 'u', 'b', 'o', 'b', 'o'];
+        <input type="text" placeholder="Row 2, Col 1">
+        <input type="text" placeholder="Row 2, Col 2">
+        <input type="text" placeholder="Row 2, Col 3">
+        <input type="text" placeholder="Row 2, Col 4">
 
-    // Función para verificar la palabra ingresada
-    function verificarPalabra() {
-        // Cuadro de dialogo y letras en minuscula para no tener problemas
-      const palabraIngresada = prompt('Ingresa una palabra de 8 letras:').toLowerCase();
+        <input type="text" placeholder="Row 3, Col 1">
+        <input type="text" placeholder="Row 3, Col 2">
+        <input type="text" placeholder="Row 3, Col 3">
+        <input type="text" placeholder="Row 3, Col 4">
 
-      // Verificar la longitud de la palabra ingresada
-      if (palabraIngresada.length !== 8) {
-        alert('Ingresa una palabra de 8 letras.');
-        return;
-      }
+        <input type="text" placeholder="Row 4, Col 1">
+        <input type="text" placeholder="Row 4, Col 2">
+        <input type="text" placeholder="Row 4, Col 3">
+        <input type="text" placeholder="Row 4, Col 4">
 
-      // Evaluar la palabra y mostrar el resultado en el div 'resultado'
-      mostrarResultado(evaluarPalabra(palabraIngresada));
-    }
+        <input type="text" placeholder="Row 5, Col 1">
+        <input type="text" placeholder="Row 5, Col 2">
+        <input type="text" placeholder="Row 5, Col 3">
+        <input type="text" placeholder="Row 5, Col 4">
+    </div>
 
-    // Función para evaluar la palabra ingresada y devolver el resultado
-    function evaluarPalabra(palabraIngresada) {
-      const resultado = { rojo: 0, amarillo: 0, verde: 0 };
-
-      // Evaluar cada letra en la palabra ingresada
-      for (let i = 0; i < palabraIngresada.length; i++) {
-        const letra = palabraIngresada[i];
-
-        // Si la letra está en la posición correcta
-        if (letra === palabraObjetivo[i]) {
-          resultado.verde++;
-        } else if (palabraObjetivo.includes(letra)) {
-          // Si la letra está en la palabra objetivo, pero en la posición incorrecta
-          resultado.amarillo++;
-        } else {
-          // Si la letra no está en la palabra objetivo
-          resultado.rojo++;
-        }
-      }
-
-      return resultado;
-    }
-
-    // Función para mostrar el resultado en el div 'resultado'
-    function mostrarResultado(resultado) {
-      const resultadoDiv = document.getElementById('resultado');
-      resultadoDiv.innerHTML = `Rojo: ${resultado.rojo}, Amarillo: ${resultado.amarillo}, Verde: ${resultado.verde}`;
-    }
-  </script>
+    <div id="keyboard">
+        <div class="key" data-value="Q">Q</div>
+        <div class="key" data-value="W">W</div>
+        <div class="key" data-value="E">E</div>
+        <div class="key" data-value="R">R</div>
+        <div class="key" data-value="T">T</div>
+        <div class="key" data-value="Y">Y</div>
+        <div class="key" data-value="U">U</div>
+        <div class="key" data-value="I">I</div>
+        <div class="key" data-value="O">O</div>
+        <div class="key" data-value="P">P</div>
+    </div>
 </body>
 </html>
