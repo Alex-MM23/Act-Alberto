@@ -131,69 +131,25 @@ function segundero() {
         }
     }
 }
-
+// hacer funcional el teclado
 let cuentaAtras = setInterval(segundero, 1000);
 
+let intento = 1;
+let input = document.getElementById("f1").firstElementChild;
 
-document.addEventListener('DOMContentLoaded', function () {
-    const keyboards = document.querySelectorAll('.cuadrados');
-    const keyboardButtons = document.getElementById('keyboard').children;
-    const letterInArea = new Map();
-  
-    // Definir las teclas del teclado
-    const keys = [
-      
-      'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
-      'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ',
-      'Z', 'X', 'C', 'V', 'B', 'N', 'M', '', '', '',
-      
-    ];
-  
-    // Crear botones para cada tecla
-    keys.forEach(key => {
-      const button = document.createElement('button');
-      button.textContent = key;
-  
-      // Manejar eventos de clic para las teclas
-      button.addEventListener('click', function () {
-        handleKeyPress(key);
-      });
-  
-      document.getElementById('keyboard').appendChild(button);
-    });
-  
-    // Función para manejar la pulsación de teclas
-    function handleKeyPress(key) {
-      keyboards.forEach((keyboard, index) => {
-        if (!letterInArea.has(index)) {
-          letterInArea.set(index, '');
-        }
-  
-        const span = document.createElement('span');
-        span.textContent = key;
-  
-        if (key === 'Space') {
-          span.style.width = '40px'; // Ajusta el ancho del espacio
-        }
-  
-        letterInArea.set(index, key);
-        updateTextInArea(keyboard, index);
-      });
+function fLetra(letra){
+    //let fila = document.getElementById("f" + intento);
+    input.value = letra.toLowerCase(); 
+    
+    if ( !input.nextElementSibling) {
+        intento ++;
+        input = document.getElementById("f" + intento).firstElementChild;
+    } else {
+        input = input.nextElementSibling;
     }
-  
-    // Función para actualizar el texto en el área
-    function updateTextInArea(area, index) {
-      // Limpia el contenido existente
-      area.innerHTML = '';
-  
-      const span = document.createElement('span');
-      span.textContent = letterInArea.get(index);
-  
-      area.appendChild(span);
-    }
-  });
+}
 
-  function mostrarModalGanador() {
+function mostrarModalGanador() {
     var modal = document.getElementById('modalGanador');
     modal.style.display = 'flex';
 }
